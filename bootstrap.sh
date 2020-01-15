@@ -17,6 +17,7 @@ function configureOpenVPN {
     mkdir /etc/openvpn/easy-rsa/keys
     sed -i -e 's/KEY_NAME="EasyRSA"/KEY_NAME="server"/' /etc/openvpn/easy-rsa/vars
     openssl dhparam -out /etc/openvpn/dh2048.pem 2048
+    cd /etc/openvpn/easy-rsa && ln -s openssl-1.0.0.cnf openssl.cnf
     cd /etc/openvpn/easy-rsa && . ./vars
     cd /etc/openvpn/easy-rsa && ./clean-all
     cd /etc/openvpn/easy-rsa && ./build-ca --batch
